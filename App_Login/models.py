@@ -49,7 +49,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         help_text = ugettext_lazy('Designates whether the user can log in the site')
     )
     
-    is_active = models.BooleanField(ugettext_lazy('active'), 
+    is_active = models.BooleanField(ugettext_lazy('active'), default=True, 
         help_text = ugettext_lazy('Designates whether this user should be treatea as active')
     )
 
@@ -66,7 +66,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.email
-
 
 
 

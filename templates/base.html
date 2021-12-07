@@ -5,7 +5,7 @@
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>{% block title %} Ecommerce Project {% endblock %}</title>
+    <title>{% block title_block %} Ecommerce Project {% endblock %}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +21,25 @@
 
     <div class="container" style="padding-top: 20px">
 
+
+      <div class="messages container mt-2">
+        {% if messages %}
+
+          {% for message in messages %}
+            
+            <div {% if message.tags %} class="alert alert-{{ message.tags }} {% endif %}" role="alert">
+
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-level="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          {% endfor %}
+        {% endif %}
+      </div>
+
+    
         {% block body_block %}
         
         {% endblock %}
