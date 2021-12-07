@@ -93,8 +93,6 @@ def user_profile(request):
 
 
 
-def change_profile():
-    pass
 
 
 
