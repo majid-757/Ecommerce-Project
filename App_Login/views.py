@@ -49,7 +49,7 @@ def login_user(request):
             if user is not None:
                 login(request, user)
 
-                return HttpResponse('Logged In')
+                return HttpResponseRedirect(reverse('App_Shop:home'))
 
     context = {
         'form': form,
@@ -90,11 +90,6 @@ def user_profile(request):
     return render(request, 'App_Login/change_profile.html', context)
 
 
-
-
-
-def change_profile(request):
-    pass
 
 
 
