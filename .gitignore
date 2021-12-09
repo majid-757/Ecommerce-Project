@@ -1,9 +1,8 @@
-media
-
 db.sqlite3
-
-venv
 
 .env
 
+venv
+
+media
 
