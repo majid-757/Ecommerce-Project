@@ -1,8 +1,8 @@
-venv
+media
 
 db.sqlite3
 
-media
+venv
 
 .env
 
