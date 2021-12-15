@@ -1,3 +1,4 @@
+{% load cart_tag %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="{% url 'App_Shop:home' %}">Django Ecommerce Project</a>
@@ -12,7 +13,9 @@ aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         {% if request.user.is_authenticated %}
         <li class="nav-item">
 <a class="nav-link" href="{% url 'App_Order:cart'%}">
-    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart </a>
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart 
+<span class="badge badge-light">({{ request.user|cart_total }})</span>
+</a>
 
         </li>
     

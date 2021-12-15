@@ -46,7 +46,7 @@ def card_view(request):
 
         context = {
             'carts': carts,
-            'orders': orders,
+            'order': order,
         }
 
         return render(request, 'App_Order/cart.html', context)
