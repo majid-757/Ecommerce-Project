@@ -25,10 +25,12 @@
                         <td>{{ cart.item.name }}</td>
 
                         <td>
-                            <a class="mr-2"href="#"><span class="badge badge-light">
+                            <a class="mr-2"href="{% url 'App_Order:decrease' pk=cart.item.pk %}"><span class="badge badge-light">
                                 <i class="fa fa-minus" aria-hidden="true"></i></span></a>
+
                             {{ cart.quantity }}
-                            <a class="mr-2"href="#"><span class="badge badge-light">
+
+                            <a class="mr-2"href="{% url 'App_Order:increase' pk=cart.item.pk %}"><span class="badge badge-light">
                                 <i class="fa fa-plus" aria-hidden="true"></i></span></a>
                         </td>
                         <td align="left">$ {{ cart.get_total }}</td>
