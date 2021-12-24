@@ -21,7 +21,7 @@ class BillingAddress(models.Model):
 
         for field_name in field_names:
             value = getattr(self, field_name)
-            if value is None and value == '':
+            if value is None or value == '':
                 return False
 
         return True

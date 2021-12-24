@@ -35,6 +35,7 @@ def checkout(request):
         'form': form,
         'order_items': order_items,
         'order_total': order_total,
+        'saved_address': saved_address,
     }
 
     return render(request, 'App_Payment/checkout.html', context)
