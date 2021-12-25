@@ -1,19 +1,17 @@
 from django.shortcuts import render
-
-
 from django.http import HttpResponse
 from django.shortcuts import redirect
 import requests
 import json
 
-MERCHANT = '65acc25e-c1cc-4d22-81c8-edc9a600f63a'
+MERCHANT = 'ac66d3d4-ea67-484b-bca8-4007e3b96d00'
 ZP_API_REQUEST = "https://api.zarinpal.com/pg/v4/payment/request.json"
 ZP_API_VERIFY = "https://api.zarinpal.com/pg/v4/payment/verify.json"
 ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/{authority}"
 amount = 11000  # Rial / Required
 description = "توضیحات مربوط به تراکنش را در این قسمت وارد کنید"  # Required
 email = 'email@example.com'  # Optional
-mobile = '09123456789'  # Optional
+mobile = '09909997497'  # Optional
 # Important: need to edit for realy server.
 CallbackURL = 'http://localhost:8000/verify/'
 
@@ -30,7 +28,7 @@ def send_request(request):
                   "content-type": "application/json'"}
     req = requests.post(url=ZP_API_REQUEST, data=json.dumps(
         req_data), headers=req_header)
-    authority = req.json()
+    authority = req.json()['data']['authority']
     if len(req.json()['errors']) == 0:
         return redirect(ZP_API_STARTPAY.format(authority=authority))
     else:
@@ -71,3 +69,4 @@ def verify(request):
             return HttpResponse(f"Error code: {e_code}, Error Message: {e_message}")
     else:
         return HttpResponse('Transaction failed or canceled by user')
+
