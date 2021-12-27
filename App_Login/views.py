@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.urls import reverse
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
@@ -15,6 +15,10 @@ from .forms import ProfileForm, SignUpForm
 
 
 def sign_up(request):
+
+    if request.user.is_authenticated and request.user.is_active:
+        return HttpResponseRedirect(reverse('App_Shop:home'))
+
     form = SignUpForm()
 
     if request.method == 'POST':
@@ -36,6 +40,10 @@ def sign_up(request):
 
 
 def login_user(request):
+
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('App_Shop:home'))
+
     form  = AuthenticationForm()
 
     if request.method == 'POST':
@@ -64,7 +72,7 @@ def logout_user(request):
     logout(request)
     messages.warning(request, 'You are logged out')
 
-    return HttpResponse('Logged Out')
+    return redirect("App_Shop:home")
 
 
 

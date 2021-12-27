@@ -25,7 +25,7 @@ data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 <i class="fa fa-user-circle-o"></i> {{ request.user.profile.username }} </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
     <a class="dropdown-item" href="{% url 'App_Login:profile' %}">Profile</a>
-    <a class="dropdown-item" href="#">Orders</a>
+    <a class="dropdown-item" href="{% url 'App_Payment:orders' %}">Orders</a>
     <div class="dropdown-divider">  </div>
     <a class="dropdown-item" href="{% url 'App_Login:logout' %}">Logout</a>
 </div>

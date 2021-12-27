@@ -102,27 +102,29 @@ def payment(request):
 
 
 
+
 @csrf_exempt
 def complete(request):
     if request.method == 'POST' or request.method == 'post':
         payment_data = request.POST
         
         status = payment_data['status']
-        val_id = payment_data['val_id']
-        tran_id = payment_data['tran_id']
-        bank_tran_id = payment_data['bank_tran_id']
 
         if status == 'VALID':
+            val_id = payment_data['val_id']
+            tran_id = payment_data['tran_id']
+            # bank_tran_id = payment_data['bank_tran_id']
+            return HttpResponseRedirect(reverse("App_Payment:purchase", kwargs={'val_id': val_id, 'tran_id': tran_id,}))
+
             messages.success(request, "Your payment completed successfully")
+
         elif status == 'FAILED':
+
             messages.warning(request, "Your payment failed! Please try again later")
 
 
     context={
-        'status': status,
-        'val_id': val_id,
-        'tran_id': tran_id,
-        'bank_tran_id': bank_tran_id,
+        
     }
 
 
@@ -131,10 +133,44 @@ def complete(request):
 
 
 
+@login_required
+def purchase(request, val_id, tran_id):
+
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
+    order = order_qs[0]
+    orderId = tran_id
+    order.ordered = True
+    order.orderId = orderId
+    order.paymentId = val_id
+    order.save()
+
+    cart_item = Cart.objects.filter(user=request.user, purchased=False)
+    for item in cart_item:
+        item.purchased = True
+        item.save()
+
+    return HttpResponseRedirect(reverse("App_Shop:home"))
+
+
+
+
+
+@login_required
+def order_view(request):
+    try:
+        orders = Order.objects.filter(user=request.user, ordered=True)
+        context = {'orders': orders}
+
+    except:
+        messages.warning(request, "You do not have an active order")
+        return redirect("App_Shop:home")
+
+    
+    return render(request, "App_Payment/order.html", context)
 
 
 
 
 
 
-
+    
