@@ -7,3 +7,5 @@ venv
 media
 
 .vscode/
+
+runtime.txt
