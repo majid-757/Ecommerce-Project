@@ -11,3 +11,7 @@ media
 runtime.txt
 
 docker-compose.yml
+
+heroku.yml
+
+Dockerfile
