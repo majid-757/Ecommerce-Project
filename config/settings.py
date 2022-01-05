@@ -32,7 +32,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'django-insecure-rarh%9eolr27#d1%zcij5k_pk$*+=fe@u21!np72co@9ahhq6o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['ecommerce-test-2.herokuapp.com', 'localhost', '127.0.0.1']
 
