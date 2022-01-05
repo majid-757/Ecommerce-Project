@@ -1,14 +1,12 @@
-db.sqlite3
+venv
 
 .env
 
-venv
 
 media
 
 .vscode/
 
-runtime.txt
 
 docker-compose.yml
 
