@@ -9,3 +9,5 @@ media
 .vscode/
 
 runtime.txt
+
+docker-compose.yml
