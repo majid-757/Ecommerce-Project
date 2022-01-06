@@ -8,6 +8,7 @@ media
 
 .vscode/
 
+Procfile
 
 docker-compose.yml
 
@@ -15,3 +16,4 @@ heroku.yml
 
 Dockerfile
 
+runtime.txt
