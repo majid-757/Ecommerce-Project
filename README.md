@@ -4,4 +4,4 @@ Store site project
 
 Technologies used : Python - Django - Bootstrap
 
-In the future, ZarrinPal payment gateway will be added
+In the future, ZarinPal payment gateway will be added
