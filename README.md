@@ -1,6 +1,6 @@
 # Ecommerce Project Developed By Django
 
-shopping website
+Shopping website
 
 Technologies used : Python - Django - Bootstrap
 
